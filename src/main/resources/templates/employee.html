@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>List Of Emplyoee</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+</head>
+<body>
+
+
+<nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Employee</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+		  
+		 <li class="nav-item">
+		  <a class="nav-link active" aria-current="page" th:href="@{/employee}">Employee Management</a>
+	     </li>
+		  
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Features</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Pricing</a>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<br>
+<br>
+
+<div class="container">
+     <div class="row">
+				<h1>List Employee</h1>
+			</div> 
+			<div class="row">
+				<div class="col-lg-3">
+					<a th:href="@{/employee/create}" class="btn btn-primary btn-sm mb-3">Add Employee</a>
+				</div>
+			</div>
+			<table class="table table-striped table-bordered">
+				<thead class="table-dark">
+					<tr>
+						<th>Employee Id</th>
+						<th>Employee Name</th>
+						<th>Employee Salary</th>
+						<th>Department No</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				
+				<tbody>
+					<tr th:each="emp: ${employee}">
+						<td th:text="${emp.eid}"></td>
+						<td th:text="${emp.ename}"></td>
+						<td th:text="${emp.esal}"></td>
+						<td th:text="${emp.deptno}"></td>
+						
+						<td>
+							
+							<a th:href="@{/view/{eid}(eid=${emp.eid})}"
+							class="btn btn-success">View</a>
+							
+							<a th:href="@{/edit/{eid}(eid=${emp.eid})}"
+							class="btn btn-primary">Edit</a>
+							
+							<a th:href="@{/delete/{eid}(eid=${emp.eid})}"
+							class="btn btn-danger">Delete</a>
+						</td>
+						
+					</tr>
+				</tbody>
+			</table>
+			</div>
+
+
+</body>
+</html>
