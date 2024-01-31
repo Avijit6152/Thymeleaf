@@ -2,6 +2,10 @@ package com.practice.entity;
 
 import java.io.Serializable;
 
+//import javax.persistence.Column;
+
+import org.hibernate.annotations.GenericGenerator;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,7 +18,10 @@ import jakarta.persistence.Table;
 public class Employee implements Serializable{
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+//	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GenericGenerator(name = "auto",strategy = "increment")
+	@GeneratedValue(generator = "auto")
+//	@Column(name = "id")
 	private int eid;
 	
 	private String ename;
